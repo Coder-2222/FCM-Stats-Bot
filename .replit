@@ -41,3 +41,9 @@ timeoutMs = 20000
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+DISCORD_TOKEN = "MTU0NDc5MzI0NjUwMzQwMzU0MA.GwP3Um.SnOwbgiuoWmVaKdC8vMRy28EN8RFTw_X-a05c4"
+GUILD_ID = "1544777288028266498"

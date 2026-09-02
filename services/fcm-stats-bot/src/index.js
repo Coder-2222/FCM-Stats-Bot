@@ -40,7 +40,8 @@ client.once(Events.ClientReady, async (readyClient) => {
     );
   } catch (error) {
     console.error("The bot connected, but slash-command registration failed.", error);
-    process.exitCode = 1;
+    await readyClient.destroy();
+    process.exit(1);
   }
 });
 
