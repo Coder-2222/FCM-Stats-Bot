@@ -1,12 +1,14 @@
-import { SlashCommandBuilder } from "discord.js";
+import { AttachmentBuilder, SlashCommandBuilder } from "discord.js";
 import {
-  compareEmbed,
   helpText,
-  playerEmbed,
-  searchEmbed,
-  statsEmbed,
-  top10Embed,
 } from "./formatters.js";
+import {
+  renderComparisonCard,
+  renderPlayerCard,
+  renderSearchCard,
+  renderTop10Card,
+} from "./image-cards.js";
+import { primaryStats } from "./player-store.js";
 
 export const commandDefinitions = [
   new SlashCommandBuilder()
@@ -66,6 +68,12 @@ function noMatchMessage(name) {
   return `I couldn't find a card matching "${name}". Try \`/search ${name}\`.`;
 }
 
+function imageReply(card) {
+  return {
+    files: [new AttachmentBuilder(card.buffer, { name: card.fileName })],
+  };
+}
+
 export async function handleInteraction(interaction, store) {
   if (!interaction.isChatInputCommand()) return;
 
@@ -73,22 +81,24 @@ export async function handleInteraction(interaction, store) {
   if (commandName === "player") {
     const name = interaction.options.getString("name", true);
     const player = store.findBest(name);
+    if (!player) return interaction.reply(noMatchMessage(name));
     return interaction.reply(
-      player ? { embeds: [playerEmbed(player)] } : noMatchMessage(name),
+      imageReply(await renderPlayerCard(player, primaryStats, store.baseDir)),
     );
   }
 
   if (commandName === "stats") {
     const name = interaction.options.getString("name", true);
     const player = store.findBest(name);
+    if (!player) return interaction.reply(noMatchMessage(name));
     return interaction.reply(
-      player
-        ? {
-            embeds: [
-              statsEmbed(player, store.getAllStatNames([player])),
-            ],
-          }
-        : noMatchMessage(name),
+      imageReply(
+        await renderPlayerCard(
+          player,
+          store.getAllStatNames([player]),
+          store.baseDir,
+        ),
+      ),
     );
   }
 
@@ -107,29 +117,30 @@ export async function handleInteraction(interaction, store) {
       return interaction.reply(`I couldn't find ${missing}.`);
     }
 
-    return interaction.reply({
-      embeds: [
-        compareEmbed(
+    return interaction.reply(
+      imageReply(
+        await renderComparisonCard(
           firstPlayer,
           secondPlayer,
           store.getAllStatNames([firstPlayer, secondPlayer]),
+          store.baseDir,
         ),
-      ],
-    });
+      ),
+    );
   }
 
   if (commandName === "top10") {
     const position = interaction.options.getString("position");
-    return interaction.reply({
-      embeds: [top10Embed(store.getTop10(position), position)],
-    });
+    return interaction.reply(
+      imageReply(await renderTop10Card(store.getTop10(position), position)),
+    );
   }
 
   if (commandName === "search") {
     const name = interaction.options.getString("name", true);
-    return interaction.reply({
-      embeds: [searchEmbed(name, store.findMatches(name))],
-    });
+    return interaction.reply(
+      imageReply(await renderSearchCard(name, store.findMatches(name))),
+    );
   }
 
   return interaction.reply(helpText());

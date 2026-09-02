@@ -3,6 +3,7 @@
     "name": "Erling Haaland",
     "ovr": 91,
     "position": "ST",
+    "shardCost": 250,
     "stats": {
       "Pace": 89,
       "Shooting": 94,
@@ -26,6 +27,7 @@
     "name": "Kylian Mbappe",
     "ovr": 92,
     "position": "ST",
+    "shardCost": 300,
     "stats": {
       "Pace": 97,
       "Shooting": 92,
@@ -49,6 +51,7 @@
     "name": "Kevin De Bruyne",
     "ovr": 91,
     "position": "CAM",
+    "shardCost": 250,
     "stats": {
       "Pace": 76,
       "Shooting": 88,
@@ -72,6 +75,7 @@
     "name": "Jude Bellingham",
     "ovr": 90,
     "position": "CM",
+    "shardCost": 200,
     "stats": {
       "Pace": 82,
       "Shooting": 84,
@@ -95,6 +99,7 @@
     "name": "Virgil van Dijk",
     "ovr": 89,
     "position": "CB",
+    "shardCost": 200,
     "stats": {
       "Pace": 78,
       "Shooting": 60,
@@ -118,6 +123,7 @@
     "name": "Alisson Becker",
     "ovr": 89,
     "position": "GK",
+    "shardCost": 175,
     "stats": {
       "Diving": 90,
       "Handling": 89,

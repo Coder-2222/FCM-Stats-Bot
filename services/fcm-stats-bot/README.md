@@ -1,6 +1,6 @@
 # FCM Stats Bot
 
-FCM Stats Bot is a beginner-friendly Discord bot for an FC Mobile community. It uses `discord.js`, Node.js, and a local `players.json` file.
+FCM Stats Bot is a beginner-friendly Discord bot for an FC Mobile community. It uses `discord.js`, Node.js, a local `players.json` file, and generated PNG stat cards.
 
 ## Files
 
@@ -8,17 +8,18 @@ FCM Stats Bot is a beginner-friendly Discord bot for an FC Mobile community. It 
 - `src/player-store.js` — loads and validates the JSON data and provides search, ranking, and stat-name helpers. This is the only layer that needs to change when replacing JSON with CSV later.
 - `src/commands.js` — defines and handles the Discord slash commands.
 - `src/formatters.js` — turns player data into readable Discord embeds.
+- `src/image-cards.js` — generates the dark neon-style PNG player, comparison, leaderboard, and search cards.
 - `src/index.js` — starts the Discord client and registers the commands in one server using `GUILD_ID`.
 - `.env.example` — documents the required environment variable names without containing a real token.
 
 ## Commands
 
-- `/player <name>` — OVR, position, Pace, Shooting, Passing, Dribbling, Defending, and Physical.
-- `/stats <name>` — every stat included on that card.
-- `/compare <player1> <player2>` — OVR, positions, all stats, and a marker for the higher value.
-- `/top10` — the ten highest OVR cards.
-- `/top10 <position>` — the ten highest OVR cards at a position such as `ST`, `CAM`, `CM`, or `CB`.
-- `/search <name>` — matching cards.
+- `/player <name>` — a PNG card with OVR, position, and core attributes.
+- `/stats <name>` — a PNG card with every stat included on that card.
+- `/compare <player1> <player2>` — a two-column PNG card with a marker for the higher value.
+- `/top10` — a PNG leaderboard of the ten highest OVR cards.
+- `/top10 <position>` — a PNG leaderboard of the ten highest OVR cards at a position such as `ST`, `CAM`, `CM`, or `CB`.
+- `/search <name>` — a PNG list of matching cards.
 
 ## Run in Replit
 
@@ -40,6 +41,8 @@ Edit `players.json` and add another object with this shape:
   "name": "Player Name",
   "ovr": 85,
   "position": "CM",
+  "shardCost": 200,
+  "cardImage": "assets/cards/player-name.png",
   "stats": {
     "Pace": 80,
     "Shooting": 75,
@@ -51,4 +54,8 @@ Edit `players.json` and add another object with this shape:
 }
 ```
 
-There is intentionally no web scraping, unofficial endpoint, updater, RSS system, PostgreSQL database, or meta-rating logic in this first version.
+`cardImage` is optional. When you have card art, place the image inside `services/fcm-stats-bot/` (for example `assets/cards/player-name.png`) and set the matching relative path in `players.json`. The bot will place it into the generated card. The attached reference screenshots are used as visual direction; they are not copied into the bot.
+
+`shardCost` is currently one number per card. The sample values are placeholders so you can replace them with verified values.
+
+There is intentionally no web scraping, unofficial endpoint, RenderZ updater, RSS system, PostgreSQL database, or meta-rating logic in this version. Automatic RenderZ updates require an official documented API, feed, or authorized export.

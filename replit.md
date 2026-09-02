@@ -28,17 +28,19 @@ An FC Mobile community Discord bot that serves player statistics from a local JS
 - `services/fcm-stats-bot/src/commands.js` — command definitions and handlers
 - `services/fcm-stats-bot/src/player-store.js` — JSON database access and search/ranking helpers
 - `services/fcm-stats-bot/src/formatters.js` — Discord response formatting
+- `services/fcm-stats-bot/src/image-cards.js` — generated PNG card rendering
 - `services/fcm-stats-bot/players.json` — sample player database
 
 ## Architecture decisions
 
 - Guild-scoped command registration is used so commands appear quickly in the test server.
 - The data access is isolated behind `PlayerStore` so a future CSV or larger database can replace the JSON source without rewriting command handlers.
+- Discord commands return generated PNG cards; optional card art is read from local paths in the player records.
 - Only Discord's `Guilds` intent is enabled because the bot only needs slash-command interactions.
 
 ## Product
 
-FCM Stats Bot supports player lookup, full-stat lookup, side-by-side comparisons, OVR leaderboards, position-filtered leaderboards, and name search.
+FCM Stats Bot supports image-based player lookup, full-stat lookup, side-by-side comparisons, OVR leaderboards, position-filtered leaderboards, name search, and per-card shard cost display.
 
 ## User preferences
 

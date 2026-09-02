@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { dirname } from "node:path";
 
 const primaryStats = [
   "Pace",
@@ -23,7 +24,8 @@ function validatePlayer(player, index) {
     typeof player.name !== "string" ||
     typeof player.position !== "string" ||
     typeof player.ovr !== "number" ||
-    !isRecord(player.stats)
+    !isRecord(player.stats) ||
+    (player.shardCost !== undefined && typeof player.shardCost !== "number")
   ) {
     throw new Error(
       `Invalid player at index ${index}. Each player needs name, position, ovr, and stats.`,
@@ -43,6 +45,8 @@ function validatePlayer(player, index) {
     name: player.name.trim(),
     position: player.position.trim().toUpperCase(),
     ovr: player.ovr,
+    shardCost: player.shardCost ?? null,
+    cardImage: typeof player.cardImage === "string" ? player.cardImage : null,
     stats: player.stats,
   };
 }
@@ -50,6 +54,7 @@ function validatePlayer(player, index) {
 export class PlayerStore {
   constructor(filePath) {
     this.filePath = filePath;
+    this.baseDir = dirname(filePath);
     this.players = [];
   }
 
