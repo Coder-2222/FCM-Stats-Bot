@@ -1,0 +1,136 @@
+[
+  {
+    "name": "Erling Haaland",
+    "ovr": 91,
+    "position": "ST",
+    "stats": {
+      "Pace": 89,
+      "Shooting": 94,
+      "Passing": 78,
+      "Dribbling": 84,
+      "Defending": 45,
+      "Physical": 93,
+      "Acceleration": 82,
+      "Sprint Speed": 94,
+      "Finishing": 97,
+      "Shot Power": 99,
+      "Long Shots": 84,
+      "Positioning": 96,
+      "Vision": 70,
+      "Ball Control": 81,
+      "Strength": 99,
+      "Jumping": 95
+    }
+  },
+  {
+    "name": "Kylian Mbappe",
+    "ovr": 92,
+    "position": "ST",
+    "stats": {
+      "Pace": 97,
+      "Shooting": 92,
+      "Passing": 80,
+      "Dribbling": 95,
+      "Defending": 39,
+      "Physical": 78,
+      "Acceleration": 99,
+      "Sprint Speed": 97,
+      "Finishing": 94,
+      "Shot Power": 91,
+      "Long Shots": 86,
+      "Positioning": 93,
+      "Vision": 79,
+      "Ball Control": 97,
+      "Agility": 96,
+      "Balance": 91
+    }
+  },
+  {
+    "name": "Kevin De Bruyne",
+    "ovr": 91,
+    "position": "CAM",
+    "stats": {
+      "Pace": 76,
+      "Shooting": 88,
+      "Passing": 97,
+      "Dribbling": 88,
+      "Defending": 64,
+      "Physical": 78,
+      "Crossing": 99,
+      "Free Kick": 92,
+      "Short Passing": 98,
+      "Long Passing": 96,
+      "Vision": 99,
+      "Long Shots": 96,
+      "Shot Power": 95,
+      "Ball Control": 90,
+      "Stamina": 88,
+      "Interceptions": 45
+    }
+  },
+  {
+    "name": "Jude Bellingham",
+    "ovr": 90,
+    "position": "CM",
+    "stats": {
+      "Pace": 82,
+      "Shooting": 84,
+      "Passing": 89,
+      "Dribbling": 90,
+      "Defending": 78,
+      "Physical": 86,
+      "Acceleration": 79,
+      "Sprint Speed": 84,
+      "Finishing": 80,
+      "Short Passing": 93,
+      "Long Passing": 85,
+      "Vision": 91,
+      "Ball Control": 93,
+      "Stamina": 95,
+      "Strength": 83,
+      "Interceptions": 74
+    }
+  },
+  {
+    "name": "Virgil van Dijk",
+    "ovr": 89,
+    "position": "CB",
+    "stats": {
+      "Pace": 78,
+      "Shooting": 60,
+      "Passing": 72,
+      "Dribbling": 68,
+      "Defending": 95,
+      "Physical": 94,
+      "Acceleration": 63,
+      "Sprint Speed": 86,
+      "Heading": 96,
+      "Marking": 97,
+      "Standing Tackle": 94,
+      "Sliding Tackle": 88,
+      "Strength": 98,
+      "Jumping": 96,
+      "Aggression": 86,
+      "Interceptions": 96
+    }
+  },
+  {
+    "name": "Alisson Becker",
+    "ovr": 89,
+    "position": "GK",
+    "stats": {
+      "Diving": 90,
+      "Handling": 89,
+      "Kicking": 85,
+      "Reflexes": 93,
+      "Speed": 55,
+      "Positioning": 91,
+      "Pace": 55,
+      "Shooting": 20,
+      "Passing": 45,
+      "Dribbling": 18,
+      "Defending": 18,
+      "Physical": 75
+    }
+  }
+]

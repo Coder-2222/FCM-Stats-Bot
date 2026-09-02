@@ -1,15 +1,17 @@
-# [Project name]
+# FCM Stats Bot
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+An FC Mobile community Discord bot that serves player statistics from a local JSON database.
 
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/fcm-stats-bot run dev` — run the Discord bot
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required bot env: `DISCORD_TOKEN` (secret) and `GUILD_ID` (Discord server ID)
+- The bot uses `services/fcm-stats-bot/players.json`; it does not use the pre-configured PostgreSQL database.
 
 ## Stack
 
@@ -22,23 +24,30 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `services/fcm-stats-bot/src/index.js` — Discord client startup and slash-command registration
+- `services/fcm-stats-bot/src/commands.js` — command definitions and handlers
+- `services/fcm-stats-bot/src/player-store.js` — JSON database access and search/ranking helpers
+- `services/fcm-stats-bot/src/formatters.js` — Discord response formatting
+- `services/fcm-stats-bot/players.json` — sample player database
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Guild-scoped command registration is used so commands appear quickly in the test server.
+- The data access is isolated behind `PlayerStore` so a future CSV or larger database can replace the JSON source without rewriting command handlers.
+- Only Discord's `Guilds` intent is enabled because the bot only needs slash-command interactions.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+FCM Stats Bot supports player lookup, full-stat lookup, side-by-side comparisons, OVR leaderboards, position-filtered leaderboards, and name search.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Keep the first version simple and local: no scraping, unofficial/private APIs, updater, RSS, PostgreSQL, or meta-rating system.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The bot will fail fast with a clear message until `DISCORD_TOKEN` and `GUILD_ID` are configured.
+- If the bot token has been shared, regenerate it in Discord before adding it to Replit Secrets.
 
 ## Pointers
 

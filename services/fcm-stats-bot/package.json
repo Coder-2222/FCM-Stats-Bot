@@ -1,0 +1,14 @@
+{
+  "name": "@workspace/fcm-stats-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Discord slash-command bot for FC Mobile player statistics.",
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.24.2"
+  }
+}
