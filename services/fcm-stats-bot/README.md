@@ -7,7 +7,7 @@ FCM Stats Bot is a beginner-friendly Discord bot for an FC Mobile community. It 
 - `players.json` — the local starter database. Add or edit cards here using the existing shape.
 - `src/player-store.js` — loads and validates the JSON data and provides search, ranking, and stat-name helpers. This is the only layer that needs to change when replacing JSON with CSV later.
 - `src/commands.js` — defines and handles the Discord slash commands.
-- `src/formatters.js` — turns player data into readable Discord embeds.
+- `src/formatters.js` — contains the text help response and legacy embed helpers.
 - `src/image-cards.js` — generates the dark neon-style PNG player, comparison, leaderboard, and search cards.
 - `src/index.js` — starts the Discord client and registers the commands in one server using `GUILD_ID`.
 - `.env.example` — documents the required environment variable names without containing a real token.

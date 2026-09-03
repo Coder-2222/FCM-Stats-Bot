@@ -27,7 +27,7 @@ An FC Mobile community Discord bot that serves player statistics from a local JS
 - `services/fcm-stats-bot/src/index.js` — Discord client startup and slash-command registration
 - `services/fcm-stats-bot/src/commands.js` — command definitions and handlers
 - `services/fcm-stats-bot/src/player-store.js` — JSON database access and search/ranking helpers
-- `services/fcm-stats-bot/src/formatters.js` — Discord response formatting
+- `services/fcm-stats-bot/src/formatters.js` — help response formatting
 - `services/fcm-stats-bot/src/image-cards.js` — generated PNG card rendering
 - `services/fcm-stats-bot/players.json` — sample player database
 

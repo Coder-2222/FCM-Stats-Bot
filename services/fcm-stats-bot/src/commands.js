@@ -132,14 +132,22 @@ export async function handleInteraction(interaction, store) {
   if (commandName === "top10") {
     const position = interaction.options.getString("position");
     return interaction.reply(
-      imageReply(await renderTop10Card(store.getTop10(position), position)),
+      imageReply(
+        await renderTop10Card(
+          store.getTop10(position),
+          position,
+          store.baseDir,
+        ),
+      ),
     );
   }
 
   if (commandName === "search") {
     const name = interaction.options.getString("name", true);
     return interaction.reply(
-      imageReply(await renderSearchCard(name, store.findMatches(name))),
+      imageReply(
+        await renderSearchCard(name, store.findMatches(name), store.baseDir),
+      ),
     );
   }
 
